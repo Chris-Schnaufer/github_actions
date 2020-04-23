@@ -24,6 +24,9 @@ jobs:
       - name: update pip
         run: python3 -m pip install --upgrade --no-cache-dir pip
         id: pip-install
+      - name: fetch/update setuptools
+        run: python3 -m pip install --upgrade --no-cache-dir setuptools
+        id: setuptools-install
       - name: fetch/update pylint
         run: python3 -m pip install --upgrade --no-cache-dir pylint
         id: pylint-install
