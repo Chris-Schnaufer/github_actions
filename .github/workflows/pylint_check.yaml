@@ -22,10 +22,10 @@ jobs:
       - name: Python version
         run: python -v
       - name: update pip
-        run: python3 -m pip update --no-cache-dir pip
+        run: python3 -m pip install --upgrade --no-cache-dir pip
         id: pip-install
       - name: fetch/update pylint
-        run: python3 -m pip install pylint --upgrade
+        run: python3 -m pip install --upgrade --no-cache-dir pylint
         id: pylint-install
   get_pylint_rc:
     runs-on: ubuntu-latest
