@@ -30,15 +30,7 @@ jobs:
       - name: fetch/update pylint
         run: python3 -m pip install --upgrade --no-cache-dir pylint
         id: pylint-install
-  get_pylint_rc:
-    runs-on: ubuntu-latest
-    needs: update_python
-    name: Fetch pylint.rc file
-    steps:
-      - run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
-  run_pylint:
-    runs-on: ubuntu-latest
-    needs: get_pylint_rc
-    name: Running pylint
-    steps:
-      - run: python3 -m pylint --rcfile ./pylint.rc **/*.py
+      - name: Fetching pylint.rc file
+        run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
+      - name: Running pylint
+        run: python3 -m pylint --rcfile ./pylint.rc **/*.py
