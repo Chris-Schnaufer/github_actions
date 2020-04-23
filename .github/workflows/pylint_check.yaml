@@ -30,5 +30,7 @@ jobs:
         id: pylint-install
       - name: Fetching pylint.rc file
         run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
+      - name: Where am I
+        run: pwd && ls -l
       - name: Running pylint
         run: python3 -m pylint --rcfile ./pylint.rc *.py
