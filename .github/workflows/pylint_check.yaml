@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - master
+      - develop
+  pull_request:
+    branches:
+      - master
+      - develop
+    tags:
+      - v*
+
+jobs:
+  update_python:
+    name: Updating python
+    runs-on: ubuntu-latest
+    steps:
+      - name: Python version
+        run: python -v
+      - name: update pip
+        run: python3 -m pip update --no-cache-dir pip
+        id: pip-install
+      - name: fetch/update pylint
+        run: python3 -m pip install pylint --upgrade
+        id: pylint-install
+  get_pylint_rc:
+    needs: update_python
+    name: Fetch pylint.rc file
+    steps:
+      - run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
+  run_pylint:
+    needs: get_pylint_rc
+    name: Running pylint
+    steps:
+      - run: pylint --rcfile ./pylint.rc **/*.py
