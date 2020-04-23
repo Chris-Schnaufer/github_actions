@@ -14,7 +14,7 @@ on:
 jobs:
   update_python:
     runs-on: ubuntu-latest
-    name: Updating python
+    name: Updating python and running pylint
     steps:
       - name: Install Python 3.7
         run: sudo apt-get install -y --no-install-recommends python3.7 python3-pip && sudo ln -sfn /usr/bin/python3.7 /usr/bin/python3
@@ -31,4 +31,4 @@ jobs:
       - name: Fetching pylint.rc file
         run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
       - name: Running pylint
-        run: python3 -m pylint --rcfile ./pylint.rc **/*.py
+        run: python3 -m pylint --rcfile ./pylint.rc *.py
