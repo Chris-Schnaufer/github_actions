@@ -34,5 +34,7 @@ jobs:
         run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
       - name: Listing
         run: ls -la
+      - name: Finding files
+        run: find . -type f -name "*.py" | xargs echo
       - name: Running pylint
-        run: find . -type f -name "*.py" | xargs python3 -m pylint --rcfile ./pylint.rc 
+        run: find . -type f -name "*.py" | xargs python3 -m pylint --rcfile ./pylint.rc
