@@ -30,6 +30,8 @@ jobs:
         id: pylint-install
       - name: Fetch source code
         uses: actions/checkout@v2
+      - name: Listing
+        run: ls -la
       - name: Fetching pylint.rc file
         run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
       - name: Running pylint
