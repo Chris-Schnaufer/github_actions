@@ -32,11 +32,11 @@ jobs:
         uses: actions/checkout@v2
       - name: Install system requirements from source
         shell: bash
-        run: [ -s "packages.txt" ] && (cat /home/extractor/packages.txt | xargs apt-get install -y --no-install-recommends) || (echo "No addtional packages to install")
+        run: '[ -s "packages.txt" ] && (cat /home/extractor/packages.txt | xargs apt-get install -y --no-install-recommends) || (echo "No addtional packages to install")'
         id: install-system-reqs
       - name: Install Python requirements from source
         shell: bash
-        run: [ -s /home/extractor/requirements.txt ] && (python3 -m pip install --no-cache-dir -r /home/extractor/requirements.txt) || (echo "No Python packages to install")
+        run: '[ -s /home/extractor/requirements.txt ] && (python3 -m pip install --no-cache-dir -r /home/extractor/requirements.txt) || (echo "No Python packages to install")'
         id: install-python-reqs
       - name: Fetching pylint.rc file
         run: wget https://raw.githubusercontent.com/AgPipeline/Organization-info/master/pylint.rc
